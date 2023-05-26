@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAB+1BMVEUAAABmIRNlIRNmIxllIBN3slV3slrdLkTdLUR6IxtyuVbmI0PcLkTZMkPeLkTdLkXeLkXeL0VmIRNmIRNmIRNmIRNmIRNmIRNmIRNmIRNmIRNmIRNlFg570mR3slV3slV3slV3slV3slV3slV3slVmIRNmIRNmIRNmIBJ4uFh3slV3slV3slV3slV3slV3slV3slV3slV3slV3slVmIRNmJRV4t1d3slV3slV3slXdLkTdLkTdLkRmIRNmIRNmIxRwgj92tlZ3slV3slV3slV3slXdLkTdLkTdLkTdLkTdLkTdLkTdLkTeLkTCKzlpIRRoJRWLd0SahlCHnVKCpFNxuVZxulbdLkTdLkTdLkTdLkTdLkTULUB3Ixp2IxrVK0DeLUTVOEXiKEPqHULdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkRmIRN3slV1tFV2s1V3s1WVjFCJmlKCo1N/qFSAp1TdLkTbMUTVOEXQP0bLRUfMREfaLkOaJyjdLUTeLUT///97M07jAAAAlHRSTlMAAAAAAAAAAAAAAAAAAAAAAABT7HAm1PJRApJ/AgEYPVRWQiAFKebOGCeK1fT8/fbfoT4EaX5c3MIeAwcFAaD6r/DslykBEUyIrbmyj1ArxuyU2fihNgUCScD3+eX3+eP2/EYCX+w245se3D/1VfxY/VNH+DTwH98LwZRcJuIEp1YTxmP6ELc85Wj0Z3DucVfPzHpALzZycgAAAAFiS0dEqFAINpIAAAAHdElNRQfnBRISDAU2GF1jAAABnElEQVQ4y3XT5VfCUBgGcKbia3d3d7eI3d2JLQgKDAxssbtQsXUW6r+p9zLgINzny3b2/PaebfeOwzEPRXl5+1A2HFJsKV8//wDKjgiowCBtcEhoWHhEZFR0DNfeEsTGxSckJiWnpKalZ2RmZXMtniBHm5uXf8OmoNAEwIFXxAfH4pLSsvLbO5T7isqqahYA1NTW1Tc0NjW3tLa1dzw8Pj2/dHZ19zgZ7u7t6x9gUASDQ8Mjo69v7x+fY/3jE85s7yIUMWx0X186hvn++QsjEgKg3hUmxYwxOp3pXDwJrmgAT8IQIuGhETA1TQLTUxhIZSQgk2Igp0mAlmOgUJKAUoHBDHnCDAazcyQwN4vBvIoEVPMYLCySwOICBkvLJLC8hAGskMAK6MEq4T2Vq/rVgrV162B9DfTLrd6wDjbUeuAGmwJrvWAT3Ngds7VtDWxvgWHLwc6uZb+7A2Dc0nv7lmB/z9hz3OHg8H9/eADuph8GPI6OzfvjE0/TACT4p2foOq1S0eh4ds4369HHuNDQssur6+urSxmtuVAb+l+KbokMn3k9DQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMy0wNS0xOFQxODoxMjowNSswMDowMK+UAEUAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjMtMDUtMThUMTg6MTI6MDUrMDA6MDDeybj5AAAAV3pUWHRSYXcgcHJvZmlsZSB0eXBlIGlwdGMAAHic4/IMCHFWKCjKT8vMSeVSAAMjCy5jCxMjE0uTFAMTIESANMNkAyOzVCDL2NTIxMzEHMQHy4BIoEouAOoXEXTyQjWVAAAAAElFTkSuQmCC"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAA21BMVEUAAABmIROM/6V3slXdLkTVO0V6qlZmIRNmIBNlGQ9mIRNmHxJqRyR3tVd3slV3slV3slV3slXdLkTdLkTdLkT/WeRlHRFoPR92sVR2tFV2tFV2s1V3slXdLkTdLkTdLkTdLkTgLkWVJSaPNyu4YEuuakytbEzdLkTdLkTfLETeLUTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkTdLkR1tFWsbkyndE3dLkTeLkTJLDzJKzzgLETeLET///9d98ViAAAAP3RSTlMAAAAAAAAAZ5QCGbJPX5mbbRwBChABTcG9/P3QPx+Cwc2qtt7y1jsZvP66aP6ZoJNzRvcY04cq3Wb1B33y8LYQuDvGAAAAAWJLR0RI8ALU6gAAAAd0SU1FB+cFEhIMBTYYXWMAAACnSURBVBjTTc/XDoJAEAXQRcbesfcuKr131EXl///IXQ2B+7DJPdlJZhD6hWGqtXqJZVEWptFstTvdXp8ScIPhaDyZzu7zxZJFAKv1ZrvbH46P5+lcriDgLxjj5PX+pOn1xgMCQcRUEvqKAgEJFyIB4uQiyBwCpQgKGVGLoBLQ9LzrGgHDzME0CICVgwVANredrDs20FPA9f7dc+kHIn4QRnEchYFP+hdAkSn2aXMtBwAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMy0wNS0xOFQxODoxMjowNSswMDowMK+UAEUAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjMtMDUtMThUMTg6MTI6MDUrMDA6MDDeybj5AAAAV3pUWHRSYXcgcHJvZmlsZSB0eXBlIGlwdGMAAHic4/IMCHFWKCjKT8vMSeVSAAMjCy5jCxMjE0uTFAMTIESANMNkAyOzVCDL2NTIxMzEHMQHy4BIoEouAOoXEXTyQjWVAAAAAElFTkSuQmCC"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fresh Harvest Box</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/modern-normalize@1.1.0/modern-normalize.min.css"
+    />
+    
+    <script type="module" crossorigin src="/html-css_87_eddvornichenko/assets/index-01dbb59f.js"></script>
+    <link rel="stylesheet" href="/html-css_87_eddvornichenko/assets/index-163b6f66.css">
+  </head>
+  <body>
+    <header class="header">
+  <div class="header-container container">
+    <nav class="navigation">
+      <ul class="menu">
+        <li class="">
+          <a class="menu-item" href="#howitworks">How It Works</a>
+        </li>
+        <li class="">
+          <a class="menu-item" href="#fruits">Fruits</a>
+        </li>
+        <li class="">
+          <a class="menu-item" href="#contacts">Contacts</a>
+        </li>
+      </ul>
+    </nav>
+    <a class="logo-header" href="./index.html" aria-label="fresh harvest box logo">
+      <svg class="" width="16" height="16">
+        <use href="/html-css_87_eddvornichenko/assets/icon-f40717c2.svg#icon-logo"></use>
+      </svg>
+      <span class="logo-text-header">fresh harvest box</span>
+    </a>
+
+    <button class="menu-toggle js-open-menu" aria-expanded="false" aria-controls="mobile-menu">
+      <svg class="" width="20" height="20">
+        <use href="/html-css_87_eddvornichenko/assets/icon-f40717c2.svg#icon-mobile-menu"></use>
+      </svg>
+    </button>
+
+    <button class="icon-uil_cart">
+      <svg class="" width="19" height="24">
+        <use href="/html-css_87_eddvornichenko/assets/icon-f40717c2.svg#icon-uil_cart_heder"></use>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<div class="menu-container js-menu-container" id="mobile-menu">
+  <div class="header-container container">
+    <a class="logo-header" href="./index.html" aria-label="fresh harvest box logo">
+      <svg class="" width="16" height="16">
+        <use href="/html-css_87_eddvornichenko/assets/icon-f40717c2.svg#icon-logo"></use>
+      </svg>
+      <span class="logo-text-header">fresh harvest box</span>
+    </a>
+    <button class="menu-toggle js-close-menu">
+      <svg class="icon-close" width="14" height="14">
+        <use href="/html-css_87_eddvornichenko/assets/icon-f40717c2.svg#icon-close"></use>
+      </svg>
+    </button>
+  </div>
+  <div class="container">
+    <ul class="mobile-menu">
+      <li class="list">
+        <a class="menu-link" href="#howitworks">How It Works</a>
+      </li>
+      <li class="list">
+        <a class="menu-link" href="#fruits">Fruits</a>
+      </li>
+      <li class="list">
+        <a class="menu-link" href="#contacts">Contacts</a>
+      </li>
+      <li class="list">
+        <a class="" href="#fruits">
+          <svg class="" width="28" height="28">
+            <use href="/html-css_87_eddvornichenko/assets/icon-f40717c2.svg#icon-uil_cart_menu"></use>
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/body-scroll-lock/3.1.5/bodyScrollLock.min.js"
+  integrity="sha512-HowizSDbQl7UPEAsPnvJHlQsnBmU2YMrv7KkTBulTLEGz9chfBoWYyZJL+MUO6p/yBuuMO/8jI7O29YRZ2uBlA=="
+  crossorigin="anonymous"></script>
+    <main>
+      <section class="hero">
+    <div class="container">
+      <div class="hero-top-container">
+        <div class="hero-title-container">
+          <h1 class="hero-title">
+            fresh harvest box <br />is your one-stop place for a delicious
+            fruit basket
+          </h1>
+        </div>
+        <div class="hero-img-container">
+          <div class="hero-girl">
+            <picture>
+            <source
+          media="(min-width: 768px)"
+          srcset="/html-css_87_eddvornichenko/assets/girl-with-orange-for-tablet-753f529f.webp 1x, /html-css_87_eddvornichenko/assets/girl-with-orange-for-tablet@2x-93717616.webp 2x"
+          type="image/webp"
+        />
+        <source
+          media="(max-width: 767px)"
+          srcset="/html-css_87_eddvornichenko/assets/girl-with-orange-for-mobile-5fb84530.webp 1x, /html-css_87_eddvornichenko/assets/girl-with-orange-for-mobile@2x-3f3cd006.webp 2x"
+          type="image/webp"
+        />
+        <img  class="hero-girl-img"
+          src="/html-css_87_eddvornichenko/assets/girl-with-orange-for-tablet-753f529f.webp"
+          alt="smiling girl holding an orange"
+          width="452"
+          height="702"
+        />
+        </picture>
+            <button class="hero-button" type="button" onclick="window.location.href = '#fruits';">
+              Shop<br />now
+            </button>
+          </div>
+          <img class="hero-main-img-banana" src="/html-css_87_eddvornichenko/assets/banana-for-desctop-ddc89e5c.webp" alt="бананы">
+          <img class="hero-main-img-straw" src="/html-css_87_eddvornichenko/assets/strawb-for-desctop-33c80a50.webp" alt="клубника">
+        </div>
+      </div>
+      <div class="pills">
+        <div class="watermelon-container">
+          <p class="watermelon-top-desc">
+            Our expertly curated fruit baskets are made with the freshest,
+            highest quality fruits available. Whether you are looking for a
+            healthy snack or a gift for a loved one, Fresh Harvest Box has got
+            you covered.
+          </p>
+          <div class="fruits-hero-container">
+            <p class="fruits-img-title">Fruit</p>
+            <div class="photo-wrapper-watermelon">
+              <img
+          class="fruits-hero-img"
+          srcset="/html-css_87_eddvornichenko/assets/watermelon-for-mobile-27badc8c.png 1x, /html-css_87_eddvornichenko/assets/watermelon-for-mobile@2x-e3398a69.png 2x"
+          src="/html-css_87_eddvornichenko/assets/watermelon-for-mobile-27badc8c.png"
+          alt="ripe watermelons"
+          width="239"
+          height="172"
+        />
+          </div>
+            <p class="fruits-description">
+              Refreshing and juicy, watermelon is the perfect summer treat and a great source of hydration
+            </p>
+          </div>
+        </div>
+        <div class="strawberry-container">
+          <ul class="tag-list">
+            <li class="organic fruits-tag">
+              <h3 class="org">#ORGANIC</h3>
+            </li>
+            <li class="prod fruits-tag">
+              <h3 class="org">#PRODUCTS</h3>
+            </li>
+            <li class="basket fruits-tag">
+              <h3 class="org">#BASKET</h3>
+            </li>
+            <li class="frui fruits-tag">
+              <h3 class="org">#FRUITS</h3>
+            </li>
+          </ul>
+          <div class="fruits-second-hero-container">
+            <p class="fruits-img-title">Fruit</p> 
+            <div class="photo-wrapper-strawberry">       
+            <picture>
+              <source srcset="/html-css_87_eddvornichenko/assets/strawberry-basket-mobile-b761f764.webp 1x, /html-css_87_eddvornichenko/assets/strawberry-basket-mobile@2x-74fc32f3.webp 2x" type="image/webp">
+
+              <img
+              class="fruits-hero-img"
+            src="/html-css_87_eddvornichenko/assets/strawberry-basket-mobile-a70de283.png"
+            alt="strawberry"
+            width="162"
+            height="185"
+            />
+            </picture>
+            </div>
+            <p class="fruits-description">
+              Sweet and juicy, strawberries are packed with vitamin C and antioxidants, making them a delicious and healthy snack
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+      <section class="how-it-works-section">
+  <div class="container">
+    <h2 class="title-order" id="howitworks">
+      TO ORDER YOUR FRUIT BASKET, SIMPLY FOLLOW THESE EASY STEPS
+    </h2>
+    <p class="text-order">
+      Our baskets are assembled with care and delivered straight to your
+      doorstep, so you can enjoy the taste of fresh fruit without ever leaving
+      your home. Whether you're looking for a healthy snack or a thoughtful
+      gift, our fruit baskets are the perfect choice.
+    </p>
+    <div class="order-steps-list list">
+      <ul class="order-steps-item">
+        <li class="number-step color-one">
+          <p class="text-step">First Step</p>
+        </li>
+        <li class="list-text-step">
+          <p class="text-item-first">
+            Just choose the fruit you want to order by clicking on the
+            checkboxes next to it.
+          </p>
+        </li>
+      </ul>
+
+      <ul class="order-steps-item">
+        <li class="number-step color-two">
+          <p class="text-step">Second Step</p>
+        </li>
+        <li class="list-text-step">
+          <p class="text-item">Click on the basket and fill out the form.</p>
+        </li>
+      </ul>
+
+      <ul class="order-steps-item">
+        <li class="number-step color-three">
+          <p class="text-step">Third Step</p>
+        </li>
+        <li class="list-text-step">
+          <p class="text-item-last">
+            Sit back and relax! Your fresh fruit basket will be delivered.
+          </p>
+        </li>
+      </ul>
+    </div>
+    <img
+      class="img-gif"
+      src="/html-css_87_eddvornichenko/assets/fresh-mixed-fruits-564d0096.gif"
+      alt="Fresh mixed fruits"
+      width="860"
+      height="476"
+      style="border-radius: 20px"
+    />
+  </div>
+</section>
+
+      <!-- SECTION FRUITS -->
+<section class="fruits">
+  <div class="container">
+    <div class="fruits-title-wrapper">
+      <h2 class="fruits-title" id="fruits">ОRGANIC FRUITS</h2>
+      <p class="fruits-text">
+        Our organic fruits are hand-picked from local farms and delivered
+        straight to your doorstep, ensuring that you get the freshest and most
+        nutritious produce possible. We offer a wide selection of organic fruits
+        grown without the use of harmful pesticides or chemicals.
+      </p>
+    </div>
+    <ul class="fruits-list">
+      <li class="fruits-item">
+        <h3 class="fruits-item-title">Strawberry</h3>
+        <p class="fruits-item-text">Plant</p>
+        <div class="fruit-image-wrapper">
+          <img
+            class="fruits-item-image"
+            srcset="/html-css_87_eddvornichenko/assets/fruit-1@1x-eeca1eea.png 1x, /html-css_87_eddvornichenko/assets/fruit-1@2x-e3c24235.png 2x"
+            src="/html-css_87_eddvornichenko/assets/fruit-1@1x-eeca1eea.png"
+            width="295"
+            height="251"
+            alt="Strawberry"
+            loading="lazy"
+          />
+
+          <div class="fruits-item-image-shadow"></div>
+        </div>
+        <span class="fruits-item-price">100 UAH / kg</span>
+      </li>
+      <li class="fruits-item">
+        <h3 class="fruits-item-title">Banana</h3>
+        <p class="fruits-item-text">Plant</p>
+        <div class="fruit-image-wrapper">
+          <img
+            class="fruits-item-image"
+            srcset="/html-css_87_eddvornichenko/assets/fruit-2@1x-b4a9567a.png 1x, /html-css_87_eddvornichenko/assets/fruit-2@2x-46cc5bd0.png 2x"
+            src="/html-css_87_eddvornichenko/assets/fruit-2@1x-b4a9567a.png"
+            width="295"
+            height="251"
+            alt="Banana"
+            loading="lazy"
+          />
+          <div class="fruits-item-image-shadow"></div>
+        </div>
+        <span class="fruits-item-price">80 UAH / kg</span>
+      </li>
+      <li class="fruits-item">
+        <h3 class="fruits-item-title">Watermelon</h3>
+        <p class="fruits-item-text">Plant</p>
+        <div class="fruit-image-wrapper">
+          <img
+            class="fruits-item-image"
+            srcset="/html-css_87_eddvornichenko/assets/fruit-3@1x-a8f25dee.png 1x, /html-css_87_eddvornichenko/assets/fruit-3@2x-ccf84555.png 2x"
+            src="/html-css_87_eddvornichenko/assets/fruit-3@1x-a8f25dee.png"
+            width="295"
+            height="251"
+            alt="Watermelon"
+            loading="lazy"
+          />
+          <div class="fruits-item-image-shadow"></div>
+        </div>
+        <span class="fruits-item-price">40 UAH / kg</span>
+      </li>
+      <li class="fruits-item">
+        <h3 class="fruits-item-title">Lime</h3>
+        <p class="fruits-item-text">Plant</p>
+        <div class="fruit-image-wrapper">
+          <img
+            class="fruits-item-image"
+            srcset="/html-css_87_eddvornichenko/assets/fruit-4@1x-eca492d0.png 1x, /html-css_87_eddvornichenko/assets/fruit-4@2x-f4f41080.png 2x"
+            src="/html-css_87_eddvornichenko/assets/fruit-4@1x-eca492d0.png"
+            width="295"
+            height="251"
+            alt="Lime"
+            loading="lazy"
+          />
+          <div class="fruits-item-image-shadow"></div>
+        </div>
+        <span class="fruits-item-price">60 UAH / kg</span>
+      </li>
+      <li class="fruits-item">
+        <h3 class="fruits-item-title">Apple</h3>
+        <p class="fruits-item-text">Plant</p>
+        <div class="fruit-image-wrapper">
+          <img
+            class="fruits-item-image"
+            srcset="/html-css_87_eddvornichenko/assets/fruit-5@1x-72438f3c.png 1x, /html-css_87_eddvornichenko/assets/fruit-5@2x-eafa9e5f.png 2x"
+            src="/html-css_87_eddvornichenko/assets/fruit-5@1x-72438f3c.png"
+            width="295"
+            height="251"
+            alt="Apple"
+            loading="lazy"
+          />
+          <div class="fruits-item-image-shadow"></div>
+        </div>
+        <span class="fruits-item-price">50 UAH / kg</span>
+      </li>
+      <li class="fruits-item">
+        <h3 class="fruits-item-title">Peach</h3>
+        <p class="fruits-item-text">Plant</p>
+        <div class="fruit-image-wrapper">
+          <img
+            class="fruits-item-image"
+            srcset="/html-css_87_eddvornichenko/assets/fruit-6@1x-cff0f0f8.png 1x, /html-css_87_eddvornichenko/assets/fruit-6@2x-1fb050a1.png 2x"
+            src="/html-css_87_eddvornichenko/assets/fruit-6@1x-cff0f0f8.png"
+            width="295"
+            height="251"
+            alt="Peach"
+            loading="lazy"
+          />
+          <div class="fruits-item-image-shadow"></div>
+        </div>
+        <span class="fruits-item-price">80 UAH / kg</span>
+      </li>
+      <li class="fruits-item">
+        <h3 class="fruits-item-title">Plums</h3>
+        <p class="fruits-item-text">Plant</p>
+        <div class="fruit-image-wrapper">
+          <img
+            class="fruits-item-image"
+            srcset="/html-css_87_eddvornichenko/assets/fruit-7@1x-ec03f102.png 1x, /html-css_87_eddvornichenko/assets/fruit-7@2x-c3e59f8b.png 2x"
+            src="/html-css_87_eddvornichenko/assets/fruit-7@1x-ec03f102.png"
+            width="295"
+            height="251"
+            alt="Plums"
+            loading="lazy"
+          />
+          <div class="fruits-item-image-shadow"></div>
+        </div>
+        <span class="fruits-item-price">40 UAH / kg</span>
+      </li>
+      <li class="fruits-item">
+        <h3 class="fruits-item-title">Orange</h3>
+        <p class="fruits-item-text">Plant</p>
+        <div class="fruit-image-wrapper">
+          <img
+            class="fruits-item-image"
+            srcset="/html-css_87_eddvornichenko/assets/fruit-8@1x-72655024.png 1x, /html-css_87_eddvornichenko/assets/fruit-8@2x-38bf0306.png 2x"
+            src="/html-css_87_eddvornichenko/assets/fruit-8@1x-72655024.png"
+            width="295"
+            height="251"
+            alt="Orange"
+            loading="lazy"
+          />
+          <div class="fruits-item-image-shadow"></div>
+        </div>
+        <span class="fruits-item-price">60 UAH / kg</span>
+      </li>
+      <li class="fruits-item">
+        <h3 class="fruits-item-title">Kiwi</h3>
+        <p class="fruits-item-text">Plant</p>
+        <div class="fruit-image-wrapper">
+          <img
+            class="fruits-item-image"
+            srcset="/html-css_87_eddvornichenko/assets/fruit-9@1x-8363aace.png 1x, /html-css_87_eddvornichenko/assets/fruit-9@2x-75067a4d.png 2x"
+            src="/html-css_87_eddvornichenko/assets/fruit-9@1x-8363aace.png"
+            width="295"
+            height="251"
+            alt="Kiwi"
+            loading="lazy"
+          />
+          <div class="fruits-item-image-shadow"></div>
+        </div>
+        <span class="fruits-item-price">90 UAH / kg</span>
+      </li>
+    </ul>
+    <div class="fruits-btn-container">
+      <button class="fruits-order-btn" type="button" id="myBtn">
+        <svg class="fruits-order-img" width="14" height="14">
+          <use href="/html-css_87_eddvornichenko/assets/fruits-0232daff.svg#icon-Vector"></use>
+        </svg>
+        ORDER
+      </button>
+    </div>
+  </div>
+</section>
+<!-- SECTION FRUITS END -->
+
+      <!----contacts---->
+<section class="contacts" id="contacts">
+  <div class="container contacts-container">
+    <div class="contacts-title-container">
+      <h2 class="contacts-title">FRESH HARVEST BOX HAS GOT YOU COVERED</h2>
+      <ul class="contacts-fruits">
+        <li>
+          <picture>
+            <source
+              srcset="/html-css_87_eddvornichenko/assets/melon-w344@1x-69b62633.png 1x"
+              media="(max-width: 1280px)"
+              width="344"
+            />
+            <source
+              srcset="/html-css_87_eddvornichenko/assets/melon-w344@2x-6bc36fc0.png 2x"
+              media="(max-width: 1280px)"
+              width="344"
+            />
+            <source
+              srcset="/html-css_87_eddvornichenko/assets/melon-w792@1x-1e0c8997.png 1x"
+              media="(min-width: 1281px)"
+              width="792"
+            />
+            <source
+              srcset="/html-css_87_eddvornichenko/assets/melon-w792@2x-cf9c2eff.png 2x"
+              media="(min-width: 1281px)"
+              width="792"
+            />
+            <img
+              srcset="/html-css_87_eddvornichenko/assets/melon-w335@2x-104c5aaf.png 2x"
+              src="/html-css_87_eddvornichenko/assets/melon-w335@1x-496a156e.png"
+              alt="melon"
+              width="335"
+            />
+          </picture>
+        </li>
+        <li class="contacts-blueberry">
+          <picture>
+            <source
+              srcset="/html-css_87_eddvornichenko/assets/blueberry-w400@1x-04bf4990.png 1x"
+              media="(min-width: 1280px)"
+              width="400"
+            />
+            <source
+              srcset="/html-css_87_eddvornichenko/assets/blueberry-w400@2x-b5ccbb26.png 2x"
+              media="(min-width: 1280px)"
+              width="400"
+            />
+            <img
+              srcset="/html-css_87_eddvornichenko/assets/blueberry-w344@2x-ef2789a0.png 2x"
+              src="/html-css_87_eddvornichenko/assets/blueberry-w344@1x-15b4c10c.png"
+              alt="blueberry"
+              width="344"
+            />
+          </picture>
+        </li>
+      </ul>
+    </div>
+    <div class="contacts-form-container">
+      <p class="contacts-text">
+        Our boxes are packed with delicious, nutritious fruits and vegetables,
+        perfect for anyone looking to eat healthier or support local farmers.
+        Order your box today and start enjoying the best that nature has to
+        offer!
+      </p>
+      <form class="contacts-form">
+        <input
+          class="contacts-modal-input"
+          type="email"
+          placeholder="Enter email..."
+          required
+        />
+        <button class="fcontacts-butoon" type="button" id="myBtnt">
+          Subscribe
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!---npm run dev--->
+
+    </main>
+    <footer class="footer">
+  <div class="footer-container container">
+    <div class="first-column">
+      <div class="one-column">
+        <img
+          class="footer-img"
+          srcset="/html-css_87_eddvornichenko/assets/gerl-mob@1x-60b936bc.png 1x, /html-css_87_eddvornichenko/assets/gerl-mob@2x-040bf12c.png 2x"
+          src="/html-css_87_eddvornichenko/assets/gerl-mob@1x-60b936bc.png"
+          alt="girl-banana"
+          width="349"
+          height="179"
+        />
+        <a
+          class="logo-footer"
+          href="./index.html"
+          aria-label="fresh harvest box logo"
+        >
+          <svg class="" width="16" height="16">
+            <use href="/html-css_87_eddvornichenko/assets/icon-f40717c2.svg#icon-logo"></use>
+          </svg>
+          <span class="logo-text-header">fresh harvest box</span>
+        </a>
+      </div>
+      <div class="2-column">
+        <ul class="footer-menu">
+          <li class="footer-menu-item">
+            <a class="footer-menu-link" href="#howitworks">How It Works</a>
+          </li>
+          <li class="footer-menu-item">
+            <a class="footer-menu-link" href="#fruits">Fruits</a>
+          </li>
+          <li class="footer-menu-item">
+            <a class="footer-menu-link" href="#contacts">Contacts</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="3-column">
+      <ul class="footer-social">
+        <li class="social-item">
+          <a
+            class="footer-social-link link"
+            href="https://facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="facebook icon"
+          >
+            <svg class="social-icon" width="28" height="28">
+              <use href="/html-css_87_eddvornichenko/assets/icon-f40717c2.svg#icon-facebook"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="social-item">
+          <a
+            class="footer-social-link link"
+            href="https://instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="instagram icon"
+          >
+            <svg class="social-icon" width="28" height="28">
+              <use href="/html-css_87_eddvornichenko/assets/icon-f40717c2.svg#icon-instagram"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="social-item">
+          <a
+            class="footer-social-link link"
+            href="https://youtube.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="youtube icon"
+          >
+            <svg class="social-icon" width="28" height="28">
+              <use href="/html-css_87_eddvornichenko/assets/icon-f40717c2.svg#icon-youtube"></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
+      <address class="footer-contacts">
+        <ul class="address">
+          <li class="address-item">
+            <a href="tel:+380684439426" class="contact-item"
+              >+380 (68) 443-94-26</a
+            >
+          </li>
+          <li class="address-item map-link">
+            <a
+              href="https://goo.gl/maps/28qS7DatdnMmZp9Q7?coh=178572&entry=tt"
+              class="contact-item"
+              target="_blank"
+              rel="noopener noreferrer"
+              >1678 S. Pioneer Road<br />Salt Lake City UT<br />84104</a
+            >
+          </li>
+        </ul>
+      </address>
+    </div>
+  </div>
+</footer>
+
+    <!--Work button ( delite)  -->
+<!-- <button data-modal-open>Orler-modal</button>
+<button thank-modal-open>THANK</button> -->
+<!--Work button ( delite)  -->
+
+<!-- Modal window ORDER -->
+<div class="backdrop is-hidden" id="myModal">
+  <div class="modal-order">
+    <div class="modal-top">
+      <h2 class="modal-order-title">Your Order</h2>
+      <button class="modal-btn-close close" >
+        <svg class="btn-close-icon" width="28" height="28">
+          <use href="/html-css_87_eddvornichenko/assets/icon-m-c23b3349.svg#icon-x"></use>
+        </svg>
+      </button>
+    </div>
+    <form class="modal-card">
+      <div class="modal-plant pinck">
+        <div class="plant">
+          <h3 class="plant-title">Strawberry Basket</h3>
+          <p class="plant-text">Plant</p>
+        </div>
+        <label class="box">
+          <input class="input-check visually-hidden" type="checkbox" />
+          <span class="check-off"></span>
+        </label>
+        <img
+          class="thumb-pinck"
+          srcset="/html-css_87_eddvornichenko/assets/strawberry-basket-w173@1x-962c5c7c.png 1x, /html-css_87_eddvornichenko/assets/strawberry-basket-w173@2x-6f40047d.png 2x"
+          src="/html-css_87_eddvornichenko/assets/strawberry-basket-w173@1x-962c5c7c.png"
+          alt="strawberry-basket"
+          width="173"
+          height="196"
+        />
+      </div>
+      <div class="modal-plant yellow">
+        <div class="plant">
+          <h3 class="plant-title">Apple Basket</h3>
+          <p class="plant-text">Plant</p>
+        </div>
+        <label class="box">
+          <input class="input-check visually-hidden" type="checkbox" />
+          <span class="check-off"></span>
+        </label>
+        <img
+          class="thumb-yellow"
+          srcset="/html-css_87_eddvornichenko/assets/apple-basket-w229@1x-69cbd681.png 1x, /html-css_87_eddvornichenko/assets/apple-basket-w229@2x-995d3c97.png 2x"
+          src="/html-css_87_eddvornichenko/assets/apple-basket-w229@1x-69cbd681.png"
+          alt="apple-basket"
+          width="229"
+          height="196"
+        />
+      </div>
+      <div class="modal-plant green">
+        <div class="plant">
+          <h3 class="plant-title">Fruits Basket</h3>
+          <p class="plant-text">Plant</p>
+        </div>
+        <label class="box">
+          <input class="input-check visually-hidden" type="checkbox" />
+          <span class="check-off"></span>
+        </label>
+        <img
+          class="thumb-green"
+          srcset="/html-css_87_eddvornichenko/assets/fruit-basket-w229@1x-505476ae.png 1x, /html-css_87_eddvornichenko/assets/fruit-basket-w229@2x-4e73102e.png 2x"
+          src="/html-css_87_eddvornichenko/assets/fruit-basket-w229@1x-505476ae.png"
+          alt="fruit-basket"
+          width="229"
+          height="196"
+        />
+      </div>
+    </form>
+    <form class="modal-use">
+      <label class="visually-hidden" for="full-name">Enter full name </label>
+      <input
+        id="full-name"
+        class="input-user"
+        type="text"
+        name="full-name"
+        pattern="^[a-zA-Z]+\s[a-zA-Z]+$"
+        title="Username must be two words separated by space, e.g. John Smith"
+        autofocus
+        placeholder="Enter full name..."
+        required
+      />
+      <label class="visually-hidden" for="email">Enter email </label>
+      <input
+        id="email"
+        class="input-user"
+        type="email"
+        name="user-email"
+        pattern="([A-z0-9_.-]{1,})@([A-z0-9_.-]{1,}).([A-z]{2,8})"
+        title="Please enter a valid user-email, e.g. dog.hot70@gmail.com"
+        placeholder="Enter email..."
+        required
+      />
+      <label class="visually-hidden" for="tel">Enter number phone</label>
+      <input
+        id="tel"
+        class="input-user"
+        type="tel"
+        name="tel"
+        pattern="^\+\d{2} \(\d{3}\) \d{3}-\d{2}-\d{2}$"
+        title="Please enter +38 (000) 000-00-00 and your phone number"
+        placeholder="Enter number phone.."
+        required
+      />
+      <label class="visually-hidden" for="massage">Enter comments</label>
+      <textarea
+        id="massage"
+        class="input-msg"
+        cols="30"
+        rows="10"
+        placeholder="Enter comments..."
+      ></textarea>
+    </form>
+    <button class="modal-btn-sub" type="submit">Submit</button>
+  </div>
+</div>
+<!-- Modal window THENK YOU -->
+<div class="fond is-hidden" id="myModalt">
+  <div class="modal-thank-top">
+    <button class="thank-btn-close closet" type="button" >
+      <svg class="btn-close-icon" width="28" height="28">
+        <use href="/html-css_87_eddvornichenko/assets/icon-m-c23b3349.svg#icon-x"></use>
+      </svg>
+    </button>
+    <img
+      class="thank-pic"
+      srcset="/html-css_87_eddvornichenko/assets/berries-w278@1x-8e011402.png 1x, /html-css_87_eddvornichenko/assets/berries-w278@2x-327102e9.png 2x"
+      src="/html-css_87_eddvornichenko/assets/berries-w278@1x-8e011402.png"
+      alt="Berries"
+      width="278"
+      height="239"
+    />
+    <div class="thank-descr">
+      <h2 class="thank-title">THANK YOU</h2>
+      <p class="thank-text">
+        Thank you for your order! Our team is preparing your box with fresh,
+        delicious fruits and vegetables, and we'll deliver it straight to your
+        doorstep. We appreciate your business and look forward to providing you
+        with the best possible experience!
+      </p>
+    </div>
+  </div>
+</div>
+
+
+
+    
+    
+    
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/body-scroll-lock/3.1.5/bodyScrollLock.min.js"
+      integrity="sha512-HowizSDbQl7UPEAsPnvJHlQsnBmU2YMrv7KkTBulTLEGz9chfBoWYyZJL+MUO6p/yBuuMO/8jI7O29YRZ2uBlA=="
+      crossorigin="anonymous"
+    ></script>
+
+    
+  </body>
+</html>
